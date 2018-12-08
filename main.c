@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
 				//2.5.1 get minimal score value to search for
 				
 				printf("Select a minimum score: ");
-				scanf("%f", score);
+				scanf("%3.2f", score);
 				
 				ndPtr = list;
 					while (ndPtr == -1)
