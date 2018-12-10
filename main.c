@@ -6,19 +6,6 @@
 
 /* run this program using the console pauser or add your own getcr, system("pause") or input loop */
 
-void list_genList() {
-	
-	printf("Reading the data files...\n");
-	printf("Read done! i items are read\n\n\n\n", /* %i: ¿µÈ­ ÃÑ °³¼ö */);
-	
-	printf("--------------------MENU--------------------\n");
-	printf("1. print ALL the movies\n");
-	printf("2. search for specific COUNTRY movies\n");
-	printf("3. search for specific RUNTIME movies\n");
-	printf("4. search for specific SCORE movies\n");
-	printf("5. exit\n\n");
-}
-
 int main(int argc, char *argv[]) {
 	
 	FILE *fp; //FILE pointer for reading movie data 
@@ -71,6 +58,7 @@ int main(int argc, char *argv[]) {
 					//ndPtr = the next node of the ndPtr;
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
+					printf("%s", mvInfo);
 				}
 				
 				break;
