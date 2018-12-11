@@ -7,7 +7,7 @@ typedef struct movInfo{
 	char name[200];
 	float score;
 	int runTime;
-	char madeIn[10];
+	char country[10];
 } movInfo_t;
 
 
