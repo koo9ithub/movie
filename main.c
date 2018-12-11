@@ -31,7 +31,9 @@ int main(int argc, char *argv[]) {
 	while ( fgetc(fp) != NULL /* read name, country, runtime and score*/ )
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		mvInfo = mv_genMvInfo(name, score, runTime, country); 
+		mvInfo = mv_genMvInfo(name, score, runTime, country) ;	//둘다 포인터 맞음 
+		
+		/*list_addNext(mvInfo, ndPtr);   어떻게 연결,저장해야 할까요.....*/ 
 		list_addTail(mvInfo, list);
 	}
 
@@ -42,6 +44,9 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0) 
 	{
 		//2.1 print menu message and get input option
+		printf("Reading the data files...\n");
+		printf("Read done! i items are read\n\n\n\n", /*파일 줄수*/);
+		
 		printf("--------------------MENU--------------------\n");
 		printf("1. print ALL the movies\n");
 		printf("2. search for specific COUNTRY movies\n");
@@ -50,7 +55,7 @@ int main(int argc, char *argv[]) {
 		printf("5. exit\n\n").
 		
 		printf("--------------------MENU--------------------\n");
-		printf("Select the option: ");
+		printf("--Select the option: ");
 		scanf("%d", option);
 		
 		switch(option)
@@ -59,7 +64,7 @@ int main(int argc, char *argv[]) {
 				printf("printing all the movies in the list.....\n\n\n");
 				
 				ndPtr = list;
-				while (ndPtr != -1)
+				while ( list_isEndNode(ndPtr) == 0 )
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -67,7 +72,10 @@ int main(int argc, char *argv[]) {
 					//print the contents of the mvInfo
 					list_getNextNd(ndPtr);
 					list_getNdObj(ndPtr) = mvInfo;
+					
 					mv_print(mvInfo);
+					printf("\t");
+					printf("-totally i movies are listed!\n", /*리스트된 영화개수*/);
 					break;
 				}
 				
@@ -76,11 +84,11 @@ int main(int argc, char *argv[]) {
 			case 2: //print movies of specific country
 				//2.3.1 get country name to search for
 				
-				printf("Select a country: ");
+				printf("--Select a country: ");
 				scanf("%s", country);
 				
 				ndPtr = list;
-				while (ndPtr == -1)
+				while ( list_isEndNode(ndPtr) == 0 )
 				{
 					//2.3.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -102,11 +110,11 @@ int main(int argc, char *argv[]) {
 			case 3:
 				//2.4.1 get minimal runtime value to search for
 				
-				printf("Select a minimum runtime: ");
+				printf("--Input a specific runtime: ");
 				scanf("%i", runTime);
 				
 				ndPtr = list;
-				while (ndPtr == -1)
+				while ( list_isEndNode(ndPtr) == 0 )
 				{
 					//2.4.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -114,7 +122,9 @@ int main(int argc, char *argv[]) {
 					//if the input runtime is lower than the runtime of the movie,
 					//then print the contents of the mvInfo
 					list_getNextNd(ndPtr);
+					list_getIndexNd(list_len(list), list);
 					list_getNdObj(ndPtr) = mvInfo;
+					
 					if ( mv_getRunTime(mvInfo) > runTime )
 					{
 						mv_print(mvInfo);
@@ -128,11 +138,11 @@ int main(int argc, char *argv[]) {
 			case 4:
 				//2.5.1 get minimal score value to search for
 				
-				printf("Select a minimum score: ");
+				printf("--Input a specific score: ");
 				scanf("%f", score);
 				
 				ndPtr = list;
-				while (ndPtr == -1)
+				while ( list_isEndNode(ndPtr) == 0 )
 				{
 					//2.5.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;

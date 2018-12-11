@@ -29,8 +29,9 @@ void mv_print(void* obj)
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
 	}
 	
-	printf("Name : %s (%s)\n", mvPtr->name, mvPtr->madeIn);
+	printf("Name : %s (%s)\n", mvPtr->name, mvPtr->country);
 	printf("running time : %i, score : %f\n", mvPtr->runTime, mvPtr->score);
+	printf("----------------------------------------------");
 	
 	return;
 }
@@ -39,25 +40,30 @@ void mv_print(void* obj)
 //return the score value from the input instance of movInfo_t structure
 float mv_getScore(void* obj)
 {
+	struct movInfo s1;
 	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	printf ("%f", s1.score);
+	
+	return score;
 }
 
 //return the runtime value from the input instance of movInfo_t structure
 int mv_getRunTime(void* obj)
 {
-	
+	return runTime;
 }
 
 //return the name string pointer from the input instance of movInfo_t structure
 char* mv_getName(void* obj)
 {
-	
+	return name;
 }
 
 //return the country string pointer from the input instance of movInfo_t structure
 char* mv_getCountry(void* obj)
 {
-	
+	return country;
 }
 
 
