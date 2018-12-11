@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 					//then print the contents of the mvInfo
 					list_getNextNd(ndPtr);
 					list_getNdObj(ndPtr) = mvInfo;
-					if ( strncmp(country1(/*데이터에서 뽑아온 나라이름*/), country, strlen(country)) == 0 )
+					if ( strncmp(mv_getCountry(mvInfo), country, strlen(country)) == 0 )
 					{
 						mv_print(mvInfo);
 						break;
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
 					//then print the contents of the mvInfo
 					list_getNextNd(ndPtr);
 					list_getNdObj(ndPtr) = mvInfo;
-					if ( runTime1(/*데이터에서 뽑아온 런타임*/) > runTime )
+					if ( mv_getRunTime(mvInfo) > runTime )
 					{
 						mv_print(mvInfo);
 						break;
@@ -141,7 +141,7 @@ int main(int argc, char *argv[]) {
 					//then print the contents of the mvInfo
 					list_getNextNd(ndPtr);
 					list_getNdObj(ndPtr) = mvInfo;
-					if ( score1(/*데이터에서 뽑아온 평점*/) > score )
+					if ( mv_getScore(mvInfo) > score )
 					{
 						mv_print(mvInfo);
 						break;
