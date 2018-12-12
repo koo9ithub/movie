@@ -16,7 +16,7 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 	movInfo_t* mvPtr;
 	
 	//allocate memory and set the member variables
-	mvPtr = (movInfo_t*)malloc(100*sizeof(movInfo_t));	//잘 생각해보세요. 
+	mvPtr = (movInfo_t*)malloc(1*sizeof(movInfo_t));	//잘 생각해보세요. 
 	
 	return (void*)mvPtr;
 }

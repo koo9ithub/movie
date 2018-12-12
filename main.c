@@ -19,6 +19,11 @@ int main(int argc, char *argv[]) {
 	void *list, *mvInfo; //pointers for linked list and a specific structure instance for a movie data
 	void *ndPtr; //void pointer for linked list node
 	
+	int a=0;
+	int b=0;
+	int c=0;
+	int d=0;
+	int e=0;
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
@@ -28,12 +33,13 @@ int main(int argc, char *argv[]) {
 	list = list_genList();	//linkedList.h에서 불러온 함수 
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	//while (  ) /* read name, country, runtime and score*/
+	while (fscanf(fp, "%s %s %d %f", name, country, &runTime, &score) != EOF)
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		mvInfo = mv_genMvInfo(name, score, runTime, country) ;	 
-		
+		printf("%s %s %d %f", name, country, runTime, score);	
+		mvInfo = mv_genMvInfo(name, score, runTime, country);	 
 		list_addTail(mvInfo, list);
+		a++;
 	}
 
 	//1.4 FILE close
@@ -44,7 +50,7 @@ int main(int argc, char *argv[]) {
 	{
 		//2.1 print menu message and get input option
 		printf("Reading the data files...\n");
-		printf("Read done! i items are read\n\n\n\n");
+		printf("Read done! %i items are read\n\n\n\n", a);
 		
 		printf("--------------------MENU--------------------\n");
 		printf("1. print ALL the movies\n");
@@ -73,9 +79,10 @@ int main(int argc, char *argv[]) {
 					mvInfo = list_getNdObj(list);
 					
 					mv_print(mvInfo);
+					b++;
 				}
 				printf("\t");
-				printf("-totally i movies are listed!\n");
+				printf("-totally %i movies are listed!\n", b);
 				
 				break;
 				
@@ -99,8 +106,11 @@ int main(int argc, char *argv[]) {
 					if ( strncmp(mv_getCountry(mvInfo), country, strlen(country)) == 0 )
 					{
 						mv_print(mvInfo);
+						c++;
 					}
 				}
+				printf("\t");
+				printf("-totally %i movies are listed!\n", c);
 				
 				break;
 				
@@ -121,12 +131,14 @@ int main(int argc, char *argv[]) {
 					ndPtr = list_getNextNd(ndPtr);
 					mvInfo = list_getNdObj(ndPtr);
 				
-					
 					if ( mv_getRunTime(mvInfo) > runTime )
 					{
 						mv_print(mvInfo);
+						d++;
 					}
 				}
+				printf("\t");
+				printf("-totally %i movies are listed!\n", d);
 				
 				break;
 				
@@ -150,8 +162,11 @@ int main(int argc, char *argv[]) {
 					if ( mv_getScore(mvInfo) > score )
 					{
 						mv_print(mvInfo);
+						e++;
 					}
 				}
+				printf("\t");
+				printf("-totally %i movies are listed!\n", e);
 				break;
 				
 			case 5:
@@ -163,7 +178,6 @@ int main(int argc, char *argv[]) {
 				printf("wrong command! input again\n");
 				break;
 		}
-	}
-	 
+	}	 
 	return 0;
 }
