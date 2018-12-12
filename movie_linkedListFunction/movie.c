@@ -16,6 +16,7 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 	movInfo_t* mvPtr;
 	
 	//allocate memory and set the member variables
+	mvPtr = (movInfo_t*)malloc(100*sizeof(movInfo_t));
 	
 	return (void*)mvPtr;
 }
@@ -40,10 +41,10 @@ void mv_print(void* obj)
 //return the score value from the input instance of movInfo_t structure
 float mv_getScore(void* obj)
 {
-	struct movInfo s1;
+	movInfo_t* mvPtr;
 	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	printf ("%f", s1.score);
+	score = mvPtr->score;
 	
 	return score;
 }
@@ -51,19 +52,34 @@ float mv_getScore(void* obj)
 //return the runtime value from the input instance of movInfo_t structure
 int mv_getRunTime(void* obj)
 {
+	movInfo_t* mvPtr;
+	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	runTime = mvPtr->runTime;
+	
 	return runTime;
 }
 
 //return the name string pointer from the input instance of movInfo_t structure
 char* mv_getName(void* obj)
 {
-	return name;
+	movInfo_t* mvPtr;
+	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	name = mvPtr->name;
+	
+	return (char*)name;
 }
 
 //return the country string pointer from the input instance of movInfo_t structure
 char* mv_getCountry(void* obj)
 {
-	return country;
+	movInfo_t* mvPtr;
+	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	country = mvPtr->country;
+	
+	return (char*)country;
 }
 
 
