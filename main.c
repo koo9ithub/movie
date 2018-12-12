@@ -22,13 +22,13 @@ int main(int argc, char *argv[]) {
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
-	fp = fopen(movie.dat, "r");
+	fp = fopen("movie.dat", "r");
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();	//linkedList.h에서 불러온 함수 
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( fgetc(fp) != NULL /* read name, country, runtime and score*/ )
+	while ( fgetc(fp) != NULL ) /* read name, country, runtime and score*/
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		mvInfo = mv_genMvInfo(name, score, runTime, country) ;	//둘다 포인터 맞음 
@@ -45,14 +45,14 @@ int main(int argc, char *argv[]) {
 	{
 		//2.1 print menu message and get input option
 		printf("Reading the data files...\n");
-		printf("Read done! i items are read\n\n\n\n", /*파일 줄수*/);
+		printf("Read done! i items are read\n\n\n\n");
 		
 		printf("--------------------MENU--------------------\n");
 		printf("1. print ALL the movies\n");
 		printf("2. search for specific COUNTRY movies\n");
 		printf("3. search for specific RUNTIME movies\n");
 		printf("4. search for specific SCORE movies\n");
-		printf("5. exit\n\n").
+		printf("5. exit\n\n");
 		
 		printf("--------------------MENU--------------------\n");
 		printf("--Select the option: ");
@@ -71,11 +71,11 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
 					list_getNextNd(ndPtr);
-					list_getNdObj(ndPtr) = mvInfo;
+					// list_getNdObj(list) = mvInfo;
 					
 					mv_print(mvInfo);
 					printf("\t");
-					printf("-totally i movies are listed!\n", /*리스트된 영화개수*/);
+					printf("-totally i movies are listed!\n");
 					break;
 				}
 				
@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
 					//if the input country matches to the country of the movie,
 					//then print the contents of the mvInfo
 					list_getNextNd(ndPtr);
-					list_getNdObj(ndPtr) = mvInfo;
+					// list_getNdObj(ndPtr) = mvInfo;
 					if ( strncmp(mv_getCountry(mvInfo), country, strlen(country)) == 0 )
 					{
 						mv_print(mvInfo);
@@ -123,7 +123,7 @@ int main(int argc, char *argv[]) {
 					//then print the contents of the mvInfo
 					list_getNextNd(ndPtr);
 					list_getIndexNd(list_len(list), list);
-					list_getNdObj(ndPtr) = mvInfo;
+					// list_getNdObj(ndPtr) = mvInfo;
 					
 					if ( mv_getRunTime(mvInfo) > runTime )
 					{
@@ -150,7 +150,7 @@ int main(int argc, char *argv[]) {
 					//if the input score is lower than the score of the movie,
 					//then print the contents of the mvInfo
 					list_getNextNd(ndPtr);
-					list_getNdObj(ndPtr) = mvInfo;
+					// list_getNdObj(ndPtr) = mvInfo;
 					if ( mv_getScore(mvInfo) > score )
 					{
 						mv_print(mvInfo);

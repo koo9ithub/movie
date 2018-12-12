@@ -42,6 +42,7 @@ void mv_print(void* obj)
 float mv_getScore(void* obj)
 {
 	movInfo_t* mvPtr;
+	float score;
 	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	score = mvPtr->score;
@@ -53,6 +54,7 @@ float mv_getScore(void* obj)
 int mv_getRunTime(void* obj)
 {
 	movInfo_t* mvPtr;
+	int runTime;
 	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	runTime = mvPtr->runTime;
@@ -64,6 +66,7 @@ int mv_getRunTime(void* obj)
 char* mv_getName(void* obj)
 {
 	movInfo_t* mvPtr;
+	char name[200];
 	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	name = mvPtr->name;
@@ -75,6 +78,7 @@ char* mv_getName(void* obj)
 char* mv_getCountry(void* obj)
 {
 	movInfo_t* mvPtr;
+	char country[10];
 	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	country = mvPtr->country;

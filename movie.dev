@@ -61,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=movie_linkedListFunction\linkedList.c
+FileName=linkedList.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -71,17 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=movie_linkedListFunction\linkedList.h
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit4]
-FileName=movie_linkedListFunction\movie.c
+FileName=movie.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -91,7 +81,17 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=movie_linkedListFunction\movie.h
+FileName=movie.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=linkedList.c
 CompileCpp=0
 Folder=
 Compile=1
