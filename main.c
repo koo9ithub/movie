@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
 	char country[10]; //movie country
 	int runTime; //movie runtime
 	float score; //movie score
+	char string[100];
 	
 	int exit_flag = 0; //flag variable for while loop
 	int option; //user input option
@@ -33,14 +34,14 @@ int main(int argc, char *argv[]) {
 	list = list_genList();	//linkedList.h에서 불러온 함수 
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while (fscanf(fp, "%s %s %d %f", name, country, &runTime, &score) != EOF)
+	while ( fscanf(fp, "%s %s %d %f", name, country, &runTime, &score) == 4 )
 	{	
-		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		printf("%s %s %d %f", name, country, runTime, score);	
+		//generate a movie info instance(mvInfo) with function mv_genMvInfo()	
 		mvInfo = mv_genMvInfo(name, score, runTime, country);	 
 		list_addTail(mvInfo, list);
 		a++;
 	}
+	
 
 	//1.4 FILE close
 	fclose(fp);
@@ -49,6 +50,7 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0) 
 	{
 		//2.1 print menu message and get input option
+		printf("\n");
 		printf("Reading the data files...\n");
 		printf("Read done! %i items are read\n\n\n\n", a);
 		
@@ -61,7 +63,7 @@ int main(int argc, char *argv[]) {
 		
 		printf("--------------------MENU--------------------\n");
 		printf("--Select the option: ");
-		scanf("%d", option);
+		scanf("%d", &option);
 		
 		switch(option)
 		{
@@ -76,7 +78,7 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
 					ndPtr = list_getNextNd(ndPtr);
-					mvInfo = list_getNdObj(list);
+					mvInfo = list_getNdObj(ndPtr);
 					
 					mv_print(mvInfo);
 					b++;
@@ -90,7 +92,7 @@ int main(int argc, char *argv[]) {
 				//2.3.1 get country name to search for
 				
 				printf("--Select a country: ");
-				scanf("%s", country);
+				scanf("%s", &country);
 				
 				ndPtr = list;
 				while ( list_isEndNode(ndPtr) == 0 )
@@ -118,7 +120,7 @@ int main(int argc, char *argv[]) {
 				//2.4.1 get minimal runtime value to search for
 				
 				printf("--Input a specific runtime: ");
-				scanf("%i", runTime);
+				scanf("%i", &runTime);
 				
 				ndPtr = list;
 				while ( list_isEndNode(ndPtr) == 0 )
@@ -146,7 +148,7 @@ int main(int argc, char *argv[]) {
 				//2.5.1 get minimal score value to search for
 				
 				printf("--Input a specific score: ");
-				scanf("%f", score);
+				scanf("%f", &score);
 				
 				ndPtr = list;
 				while ( list_isEndNode(ndPtr) == 0 )
