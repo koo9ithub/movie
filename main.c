@@ -28,12 +28,11 @@ int main(int argc, char *argv[]) {
 	list = list_genList();	//linkedList.h에서 불러온 함수 
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while ( fgetc(fp) != NULL ) /* read name, country, runtime and score*/
+	//while (  ) /* read name, country, runtime and score*/
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		mvInfo = mv_genMvInfo(name, score, runTime, country) ;	//둘다 포인터 맞음 
+		mvInfo = mv_genMvInfo(name, score, runTime, country) ;	 
 		
-		/*list_addNext(mvInfo, ndPtr);   어떻게 연결,저장해야 할까요.....*/ 
 		list_addTail(mvInfo, list);
 	}
 
@@ -70,14 +69,13 @@ int main(int argc, char *argv[]) {
 					//ndPtr = the next node of the ndPtr;
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
-					list_getNextNd(ndPtr);
-					// list_getNdObj(list) = mvInfo;
+					ndPtr = list_getNextNd(ndPtr);
+					mvInfo = list_getNdObj(list);
 					
 					mv_print(mvInfo);
-					printf("\t");
-					printf("-totally i movies are listed!\n");
-					break;
 				}
+				printf("\t");
+				printf("-totally i movies are listed!\n");
 				
 				break;
 				
@@ -95,14 +93,13 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//if the input country matches to the country of the movie,
 					//then print the contents of the mvInfo
-					list_getNextNd(ndPtr);
-					// list_getNdObj(ndPtr) = mvInfo;
+					ndPtr = list_getNextNd(ndPtr);
+					mvInfo = list_getNdObj(ndPtr);
+					
 					if ( strncmp(mv_getCountry(mvInfo), country, strlen(country)) == 0 )
 					{
 						mv_print(mvInfo);
-						break;
 					}
-					break;
 				}
 				
 				break;
@@ -121,16 +118,14 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//if the input runtime is lower than the runtime of the movie,
 					//then print the contents of the mvInfo
-					list_getNextNd(ndPtr);
-					list_getIndexNd(list_len(list), list);
-					// list_getNdObj(ndPtr) = mvInfo;
+					ndPtr = list_getNextNd(ndPtr);
+					mvInfo = list_getNdObj(ndPtr);
+				
 					
 					if ( mv_getRunTime(mvInfo) > runTime )
 					{
 						mv_print(mvInfo);
-						break;
 					}
-					break;
 				}
 				
 				break;
@@ -149,14 +144,13 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					//if the input score is lower than the score of the movie,
 					//then print the contents of the mvInfo
-					list_getNextNd(ndPtr);
-					// list_getNdObj(ndPtr) = mvInfo;
+					ndPtr = list_getNextNd(ndPtr);
+					mvInfo = list_getNdObj(ndPtr);
+					
 					if ( mv_getScore(mvInfo) > score )
 					{
 						mv_print(mvInfo);
-						break;
 					}
-					break;
 				}
 				break;
 				

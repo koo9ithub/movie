@@ -16,7 +16,7 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 	movInfo_t* mvPtr;
 	
 	//allocate memory and set the member variables
-	mvPtr = (movInfo_t*)malloc(100*sizeof(movInfo_t));
+	mvPtr = (movInfo_t*)malloc(100*sizeof(movInfo_t));	//잘 생각해보세요. 
 	
 	return (void*)mvPtr;
 }
@@ -44,7 +44,7 @@ float mv_getScore(void* obj)
 	movInfo_t* mvPtr;
 	float score;
 	
-	movInfo_t* mvPtr = (movInfo_t*)obj;
+	mvPtr = (movInfo_t*)obj;
 	score = mvPtr->score;
 	
 	return score;
@@ -56,7 +56,7 @@ int mv_getRunTime(void* obj)
 	movInfo_t* mvPtr;
 	int runTime;
 	
-	movInfo_t* mvPtr = (movInfo_t*)obj;
+	mvPtr = (movInfo_t*)obj;
 	runTime = mvPtr->runTime;
 	
 	return runTime;
@@ -66,9 +66,9 @@ int mv_getRunTime(void* obj)
 char* mv_getName(void* obj)
 {
 	movInfo_t* mvPtr;
-	char name[200];
+	char *name;
 	
-	movInfo_t* mvPtr = (movInfo_t*)obj;
+	mvPtr = (movInfo_t*)obj;
 	name = mvPtr->name;
 	
 	return (char*)name;
@@ -78,9 +78,10 @@ char* mv_getName(void* obj)
 char* mv_getCountry(void* obj)
 {
 	movInfo_t* mvPtr;
-	char country[10];
+	char* country;
+	int i;
 	
-	movInfo_t* mvPtr = (movInfo_t*)obj;
+	mvPtr = (movInfo_t*)obj;
 	country = mvPtr->country;
 	
 	return (char*)country;
