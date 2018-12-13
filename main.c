@@ -37,7 +37,8 @@ int main(int argc, char *argv[]) {
 	while ( fscanf(fp, "%s %s %d %f", name, country, &runTime, &score) == 4 )
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()	
-		mvInfo = mv_genMvInfo(name, score, runTime, country);	 
+		mvInfo = mv_genMvInfo(name, score, runTime, country);
+		mv_print(mvInfo);
 		list_addTail(mvInfo, list);
 		a++;
 	}
@@ -85,6 +86,7 @@ int main(int argc, char *argv[]) {
 				}
 				printf("\t");
 				printf("-totally %i movies are listed!\n", b);
+				b=0;
 				
 				break;
 				
@@ -113,6 +115,7 @@ int main(int argc, char *argv[]) {
 				}
 				printf("\t");
 				printf("-totally %i movies are listed!\n", c);
+				c=0;
 				
 				break;
 				
@@ -141,6 +144,7 @@ int main(int argc, char *argv[]) {
 				}
 				printf("\t");
 				printf("-totally %i movies are listed!\n", d);
+				d=0;
 				
 				break;
 				
@@ -170,6 +174,7 @@ int main(int argc, char *argv[]) {
 				printf("\t");
 				printf("-totally %i movies are listed!\n", e);
 				break;
+				e=0;
 				
 			case 5:
 				printf("Bye!\n\n");
